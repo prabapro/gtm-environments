@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>GTM Environment - UAT</title>
+
+		<!-- Google Tag Manager -->
+		<script>
+			var gtmContainerId = "GTM-NWB9RFL";
+			var gtmEnvKey = ""; //Empty string for production
+
+			//QA server
+			if (location.host === "localhost:777") {
+				//Environment Auth Key for QA
+				gtmEnvKey =
+					"&gtm_auth=eT_YIys-qKEDGhhSmynThA&gtm_preview=env-4&gtm_cookies_win=x";
+			}
+
+			//UAT Server
+			else if (location.host === "localhost:888") {
+				//Environment Auth Key for UAT
+				gtmEnvKey =
+					"&gtm_auth=nWTGEsYPuuPwoefAVbHdqg&gtm_preview=env-5&gtm_cookies_win=x";
+			} else gtmEnvKey;
+
+			//Main GTM Function
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src =
+					"https://www.googletagmanager.com/gtm.js?id=" + i + dl + gtmEnvKey;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", gtmContainerId);
+		</script>
+		<!-- End Google Tag Manager -->
+	</head>
+
+	<body>
+		<h1>UAT Environment</h1>
+		<p>Runs on localhost:888</p>
+	</body>
+</html>
